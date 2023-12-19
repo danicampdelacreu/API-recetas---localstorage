@@ -49,7 +49,7 @@ function iniciarApp() {
 
         const heading = document.createElement('H2');
         heading.classList.add('text-center', 'text-black', 'my-5');
-        heading.textContent = recetas.length ? 'Resultados': 'No Hay Resultados';
+        heading.textContent = recetas.length ? 'Lista de Favoritos': 'No Hay Resultados';
         resultado.appendChild(heading);
         
         // Iterar en los resultados
@@ -144,14 +144,14 @@ function iniciarApp() {
         // Botones de cerrar y favorito
         const btnFavorito = document.createElement('BUTTON');
         btnFavorito.classList.add('btn', 'btn-danger', 'col');
-        btnFavorito.textContent = existeStorage(idMeal) ? 'Eliminar Favorito' : 'Guardar Favorito';
+        btnFavorito.textContent = existeStorage(idMeal) ? 'Eliminar de Favoritos' : 'Guardar en Favoritos';
 
         // localstorage
         btnFavorito.onclick = function() {
             if(existeStorage(idMeal)) {
                 eliminarFavorito(idMeal);
-                btnFavorito.textContent = 'Guardar Favorito';
-                mostrarToast('Eliminado Correctamente');
+                btnFavorito.textContent = 'Guardar en Favoritos';
+                mostrarToast(`Eliminando ${strMeal}  de favoritos`);
                 return
             }
 
@@ -160,8 +160,8 @@ function iniciarApp() {
                 titulo: strMeal,
                 img: strMealThumb 
             });
-            btnFavorito.textContent = 'Eliminar Favorito';
-            mostrarToast('Agregado Correctamente');
+            btnFavorito.textContent = 'Eliminar de Favoritos';
+            mostrarToast(`Agregando ${strMeal} a favoritos`);
         }
 
         const btnCerrarModal = document.createElement('BUTTON');
